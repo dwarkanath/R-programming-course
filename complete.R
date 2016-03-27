@@ -4,7 +4,7 @@ complete <- function(directory, id =1:332){
   nobs <- data.frame()
   for (i in id){
     x <- read.csv(files[i])
-    y <- nrow(x)-max(sum(is.na(x[,2])),sum(is.na(x[,3])))
+    y <- nrow(x)-(sum(is.na(x[,2]))+ sum(is.na(x[,3])) -sum(is.na(x[,2])*is.na(x[,3])))
     nobs <- rbind(nobs,y)
   }
   req <- cbind(req,nobs)
